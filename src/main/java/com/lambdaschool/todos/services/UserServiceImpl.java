@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService
         newUser.setPassword(user.getPassword());
         newUser.setPrimaryemail(user.getPrimaryemail()
             .toLowerCase());
-
+    
         return userrepos.save(newUser);
     }
 
