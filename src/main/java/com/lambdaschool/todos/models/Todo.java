@@ -4,14 +4,12 @@ package com.lambdaschool.todos.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+
 
 //  The entity allowing interaction with the todos table.
 @Entity
-@Table(name = 'todos')
-public class Todo extends Auditable implements Serializable {
+@Table(name = "todos")
+public class Todo extends Auditable {
 
     //  Fields
 
@@ -28,7 +26,7 @@ public class Todo extends Auditable implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "userid", nullable = false)
-    @JsonIgnoreProperties(value = "users", allowSetters = true)
+    @JsonIgnoreProperties(value = "todos", allowSetters = true)
     private User user;
 
     //  Default Constructor used primarily by the JPA

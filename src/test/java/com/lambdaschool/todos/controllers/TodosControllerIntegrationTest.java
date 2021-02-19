@@ -2,7 +2,7 @@ package com.lambdaschool.todos.controllers;
 
 import com.lambdaschool.todos.TodosApplication;
 import com.lambdaschool.todos.TodosApplicationTests;
-import com.lambdaschool.todos.models.Todos;
+import com.lambdaschool.todos.models.Todo;
 import com.lambdaschool.todos.models.User;
 import com.lambdaschool.todos.services.TodosService;
 import com.lambdaschool.todos.services.UserService;
@@ -63,7 +63,7 @@ public class TodosControllerIntegrationTest
             "testpassword",
             "test@email.com");
         newUser.getTodos()
-            .add(new Todos(newUser,
+            .add(new Todo(newUser,
                 "testTodo"));
         newUser = userService.save(newUser);
 

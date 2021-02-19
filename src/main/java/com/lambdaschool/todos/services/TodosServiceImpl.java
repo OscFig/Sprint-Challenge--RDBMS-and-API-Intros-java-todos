@@ -1,30 +1,29 @@
 package com.lambdaschool.todos.services;
 
-
 import com.lambdaschool.todos.models.Todo;
 import com.lambdaschool.todos.models.User;
 import com.lambdaschool.todos.repository.TodosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 
 @Transactional
 @Service(value = "todosService")
-public class TodosServiceImpl implements TodosService{
-
+public class TodosServiceImpl implements TodosService
+{
     @Autowired
     private TodosRepository todosrepos;
 
     @Autowired
-    private UserService userService;
+    UserService userService;
 
     @Override
     public Todo save(long userid, Todo newTodo)
     {
-        User currentuser = userService.findUserById(userid);
-        Todo saveTodo = new Todo(currentuser, newTodo.getDescription());
+        User currentUser = userService.findUserById(userid);
+        Todo saveTodo = new Todo(currentUser, newTodo.getDescription());
         todosrepos.save(saveTodo);
         return saveTodo;
     }
