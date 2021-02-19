@@ -1,6 +1,6 @@
 package com.lambdaschool.todos.services;
 
-import com.lambdaschool.todos.models.Todo;
+import com.lambdaschool.todos.models.Todos;
 import com.lambdaschool.todos.models.User;
 import com.lambdaschool.todos.repository.TodosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,18 +20,18 @@ public class TodosServiceImpl implements TodosService
     UserService userService;
 
     @Override
-    public Todo save(long userid, Todo newTodo)
+    public Todos save(long userid, Todos newTodo)
     {
         User currentUser = userService.findUserById(userid);
-        Todo saveTodo = new Todo(currentUser, newTodo.getDescription());
+        Todos saveTodo = new Todos(currentUser, newTodo.getDescription());
         todosrepos.save(saveTodo);
         return saveTodo;
     }
 
     @Override
-    public Todo markComplete(long todoid)
+    public Todos markComplete(long todoid)
     {
-        Todo updateTodo = todosrepos.findById(todoid).orElseThrow(() -> new EntityNotFoundException("Todo Item " + todoid + " Not Found"));
+        Todos updateTodo = todosrepos.findById(todoid).orElseThrow(() -> new EntityNotFoundException("Todos Item " + todoid + " Not Found"));
         updateTodo.setCompleted(true);
         return todosrepos.save(updateTodo);
     }

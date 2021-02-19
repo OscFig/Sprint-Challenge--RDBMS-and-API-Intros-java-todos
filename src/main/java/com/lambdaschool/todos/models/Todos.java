@@ -9,7 +9,7 @@ import javax.persistence.*;
 //  The entity allowing interaction with the todos table.
 @Entity
 @Table(name = "todos")
-public class Todo extends Auditable {
+public class Todos extends Auditable {
 
     //  Fields
 
@@ -30,10 +30,10 @@ public class Todo extends Auditable {
     private User user;
 
     //  Default Constructor used primarily by the JPA
-    public Todo() {
+    public Todos() {
     }
 
-    public Todo(User user, String description) {
+    public Todos(User user, String description) {
         this.description = description;
         this.user = user;
     }
